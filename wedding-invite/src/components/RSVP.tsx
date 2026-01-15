@@ -146,19 +146,22 @@ export default function RSVP() {
     setStatus("loading");
 
     try {
-      const res = await fetch("http://localhost:4000/rsvp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          attending,
-          guests,
-          transfer,
-          overnight,
-        }),
-      });
+      const res = await fetch(
+        "https://weddinginvitation-production-0e2a.up.railway.app/rsvp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            attending,
+            guests,
+            transfer,
+            overnight,
+          }),
+        }
+      );
 
       if (res.ok) {
         setStatus("success");
