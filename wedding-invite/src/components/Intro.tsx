@@ -72,7 +72,7 @@ export default function Intro() {
         viewport={{ once: true }}
         className="mt-16 text-center max-w-xl mx-auto"
       >
-        <p className="text-2xl">С нетерпением ждем всех Вас !</p>
+        <p className="text-2xl">С нетерпением ждем всех Вас!</p>
       </motion.div>
     </section>
   );

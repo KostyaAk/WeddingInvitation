@@ -3,14 +3,30 @@ import { motion } from "framer-motion";
 
 const events = [
   {
-    time: "14:00",
-    title: "Сбор гостей",
-    desc: "Встречаемся и настраиваемся на праздник",
+    time: "14.30 - 15:00",
+    title: "Сбор гостей и Фуршет",
+    desc: "Встречаемся, наслаждаемся фуршетом, настраиваемся на веселый праздник",
   },
-  { time: "15:00", title: "Церемония", desc: "Скажем друг другу «да»" },
-  { time: "16:00", title: "Фотосессия", desc: "Сохраним эмоции этого дня" },
-  { time: "17:00", title: "Банкет", desc: "Праздничный ужин и тёплые тосты" },
-  { time: "21:00", title: "Вечеринка", desc: "Танцы и веселье до вечера" },
+  {
+    time: "16:00",
+    title: "Свадебная церемония",
+    desc: "Скажем друг другу «да»",
+  },
+  {
+    time: "17:00",
+    title: "Банкет",
+    desc: "Время вкусной еды, музыки, приятных пожеланий и танцев",
+  },
+  {
+    time: "22:00",
+    title: "Торт",
+    desc: "Будет вкусной 'вишенкой' нашего праздника",
+  },
+  {
+    time: "23:00",
+    title: "Afterparty",
+    desc: "Продолжение праздника в менее официальном формате",
+  },
 ];
 
 export default function Timeline() {
@@ -29,7 +45,7 @@ export default function Timeline() {
             className="border-l border-gray-700 pl-6"
           >
             <p className="text-gray-900 text-lg">{e.time}</p>
-            <h3 className="text-xl mt-1">{e.title}</h3>
+            <h3 className="text-xl italic mt-1">{e.title}</h3>
             <p className="text-gray-900 text-lg mt-1">{e.desc}</p>
           </motion.div>
         ))}

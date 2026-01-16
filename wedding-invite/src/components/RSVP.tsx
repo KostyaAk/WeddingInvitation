@@ -1,140 +1,11 @@
-// "use client";
-// import { useState } from "react";
-// import { motion } from "framer-motion";
-
-// export default function RSVP() {
-//   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
-
-//   async function submit(e: React.FormEvent<HTMLFormElement>) {
-//     e.preventDefault();
-//     setStatus("sending");
-
-//     const form = e.currentTarget;
-//     const data = {
-//       name: form.fullname.value,
-//       attending: form.attending.value,
-//       guests: form.guests.value,
-//       transfer: form.transfer.value,
-//       overnight: form.overnight.value,
-//     };
-
-//     await fetch("http://localhost:4000/rsvp", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(data),
-//     });
-
-//     setStatus("sent");
-//     form.reset();
-//   }
-
-//   return (
-//     <section className="min-h-screen bg-white text-black px-8 py-24 flex flex-col justify-center">
-//       <motion.h2
-//         initial={{ opacity: 0, y: 30 }}
-//         whileInView={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 0.8 }}
-//         className="text-4xl text-center mb-6 italic"
-//       >
-//         Подтверждение приглашения
-//       </motion.h2>
-
-//       <motion.p
-//         initial={{ opacity: 0 }}
-//         whileInView={{ opacity: 1 }}
-//         transition={{ delay: 0.2 }}
-//         className="text-center text-gray-600 max-w-md mx-auto mb-12"
-//       >
-//         Пожалуйста, подтвердите ваше участие до{" "}
-//         <span className="text-black">1 апреля 2026</span>, чтобы мы могли всё
-//         правильно спланировать.
-//       </motion.p>
-
-//       <form onSubmit={submit} className="max-w-md mx-auto space-y-6">
-//         <input
-//           name="fullname"
-//           required
-//           placeholder="Имя и фамилия"
-//           className="w-full p-3 bg-transparent border border-gray-700 rounded text-black"
-//         />
-
-//         <div>
-//           <label className="block text-sm text-gray-600 mb-2">
-//             Вы сможете присутствовать?
-//           </label>
-//           <select
-//             name="attending"
-//             required
-//             className="w-full p-3 bg-white border border-gray-700 rounded text-black"
-//           >
-//             <option value="">Выберите вариант</option>
-//             <option value="yes">Да, я буду</option>
-//             <option value="no">К сожалению, не смогу</option>
-//           </select>
-//         </div>
-
-//         <input
-//           name="guests"
-//           type="number"
-//           min="1"
-//           required
-//           placeholder="Количество гостей (включая вас)"
-//           className="w-full p-3 bg-transparent border border-gray-700 rounded text-black"
-//         />
-
-//         <div>
-//           <label className="block text-sm text-gray-600 mb-2">
-//             Нужен ли вам трансфер из Минска и обратно?
-//           </label>
-//           <select
-//             name="transfer"
-//             required
-//             className="w-full p-3 bg-white border border-gray-700 rounded text-black"
-//           >
-//             <option value="">Выберите вариант</option>
-//             <option value="yes">Да, нужен</option>
-//             <option value="no">Нет, не нужен</option>
-//           </select>
-//         </div>
-
-//         <div>
-//           <label className="block text-sm text-gray-600 mb-2">
-//             Планируете ли вы оставаться на ночь?
-//           </label>
-//           <select
-//             name="overnight"
-//             required
-//             className="w-full p-3 bg-white border border-gray-700 rounded text-black"
-//           >
-//             <option value="">Выберите вариант</option>
-//             <option value="yes">Да, планирую</option>
-//             <option value="no">Нет, не планирую</option>
-//           </select>
-//         </div>
-
-//         <button
-//           disabled={status === "sending"}
-//           className="w-full border border-black py-3 mt-6 hover:bg-white hover:text-black transition"
-//         >
-//           {status === "sending" ? "Отправка..." : "Отправить"}
-//         </button>
-
-//         {status === "sent" && (
-//           <p className="text-center text-gray-600 mt-4">
-//             Спасибо! Ваш ответ отправлен.
-//           </p>
-//         )}
-//       </form>
-//     </section>
-//   );
-// }
 "use client";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function RSVP() {
   const [name, setName] = useState("");
   const [attending, setAttending] = useState("да, я буду");
-  const [guests, setGuests] = useState(1);
+  const [guests, setGuests] = useState("");
   const [transfer, setTransfer] = useState("Нет не нужен");
   const [overnight, setOvernight] = useState("Нет не планирую");
   const [status, setStatus] = useState<
@@ -167,7 +38,7 @@ export default function RSVP() {
         setStatus("success");
         setName("");
         setAttending("да, я буду");
-        setGuests(1);
+        setGuests("");
         setTransfer("Нет не нужен");
         setOvernight("Нет не планирую");
       } else {
@@ -180,62 +51,169 @@ export default function RSVP() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4 p-4">
-      <h2 className="text-2xl italic text-center mb-4">
-        Подтверждение приглашения
-      </h2>
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6 p-4">
+      <h2 className="text-2xl italic text-center">Подтверждение приглашения</h2>
 
-      <input
-        type="text"
-        placeholder="Имя и Фамилия"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-        className="w-full px-4 py-2 border rounded"
-      />
-
-      <select
-        value={attending}
-        onChange={(e) => setAttending(e.target.value)}
-        className="w-full px-4 py-2 border rounded"
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="text-center text-lg text-gray-900 mb-8"
       >
-        <option value="да, я буду">Да, я буду</option>
-        <option value="к сожалению не смогу">К сожалению, не смогу</option>
-      </select>
+        Пожалуйста, подтвердите ваше участие до
+        <br />
+        <b>1 апреля 2026</b>
+      </motion.p>
 
-      <input
-        type="number"
-        min={1}
-        value={guests}
-        onChange={(e) => setGuests(Number(e.target.value))}
-        className="w-full px-4 py-2 border rounded"
-      />
+      {/* Имя */}
+      <div>
+        <label className="block text-lg mb-1">Ваше имя и фамилия</label>
+        <input
+          type="text"
+          placeholder="Имя Фамилия"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="w-full px-4 py-3 border rounded focus:outline-none focus:border-black"
+        />
+      </div>
 
-      <select
-        value={transfer}
-        onChange={(e) => setTransfer(e.target.value)}
-        className="w-full px-4 py-2 border rounded"
-      >
-        <option value="Да нужен">Да нужен</option>
-        <option value="Нет не нужен">Нет не нужен</option>
-      </select>
+      {/* Присутствие — RADIO */}
+      <div>
+        <label className="block text-lg mb-2">
+          Сможете ли вы присутствовать?
+        </label>
 
-      <select
-        value={overnight}
-        onChange={(e) => setOvernight(e.target.value)}
-        className="w-full px-4 py-2 border rounded"
-      >
-        <option value="Да планирую">Да планирую</option>
-        <option value="Нет не планирую">Нет не планирую</option>
-      </select>
+        <div className="space-y-2">
+          <label className="flex items-center gap-2">
+            <input
+              type="radio"
+              name="attending"
+              value="да, я буду"
+              checked={attending === "да, я буду"}
+              onChange={(e) => setAttending(e.target.value)}
+            />
+            Да, я буду
+          </label>
 
+          <label className="flex items-center gap-2">
+            <input
+              type="radio"
+              name="attending"
+              value="к сожалению не смогу"
+              checked={attending === "к сожалению не смогу"}
+              onChange={(e) => setAttending(e.target.value)}
+            />
+            К сожалению, не смогу
+          </label>
+        </div>
+      </div>
+
+      {/* УСЛОВНЫЕ ПОЛЯ */}
+      <AnimatePresence>
+        {attending === "да, я буду" && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.4 }}
+            className="space-y-6 overflow-hidden"
+          >
+            {/* Гости */}
+            <div>
+              <label className="block text-lg mb-1">
+                Количество гостей (включая вас)
+              </label>
+              <input
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                placeholder="Например, 2"
+                value={guests}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  if (/^\d*$/.test(value)) {
+                    setGuests(value);
+                  }
+                }}
+                className="no-spinner w-full px-4 py-3 border rounded focus:outline-none focus:border-black"
+              />
+            </div>
+
+            {/* Трансфер */}
+            <div>
+              <label className="block text-lg mb-2">
+                Нужен ли вам трансфер из Минска и обратно?
+              </label>
+
+              <div className="space-y-2">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="transfer"
+                    value="Да нужен"
+                    checked={transfer === "Да нужен"}
+                    onChange={(e) => setTransfer(e.target.value)}
+                  />
+                  Да, нужен
+                </label>
+
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="transfer"
+                    value="Нет не нужен"
+                    checked={transfer === "Нет не нужен"}
+                    onChange={(e) => setTransfer(e.target.value)}
+                  />
+                  Нет, не нужен
+                </label>
+              </div>
+            </div>
+
+            {/* Ночёвка */}
+            <div>
+              <label className="block text-lg mb-2">
+                Планируете ли вы оставаться на ночь?
+              </label>
+
+              <div className="space-y-2">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="overnight"
+                    value="Да планирую"
+                    checked={overnight === "Да планирую"}
+                    onChange={(e) => setOvernight(e.target.value)}
+                  />
+                  Да, планирую
+                </label>
+
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="overnight"
+                    value="Нет не планирую"
+                    checked={overnight === "Нет не планирую"}
+                    onChange={(e) => setOvernight(e.target.value)}
+                  />
+                  Нет, не планирую
+                </label>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Кнопка */}
       <button
         type="submit"
-        className="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition"
+        className="w-full bg-black text-white py-3 rounded hover:bg-gray-800 transition"
       >
         Подтвердить
       </button>
 
+      {/* Статусы */}
       {status === "loading" && (
         <p className="text-center text-gray-500">Отправка...</p>
       )}

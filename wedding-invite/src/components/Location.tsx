@@ -32,7 +32,7 @@ export default function Location() {
           номера для ночлега.
         </p>
         <p className="text-2xl text-gray-900">Именно здесь мы будем отмечать</p>
-        <h3 className="text-3xl italic mb-2">день рождения нашей семьи !</h3>
+        <h3 className="text-3xl italic mb-2">День рождения нашей семьи !</h3>
       </motion.div>
 
       {/* Фото */}
