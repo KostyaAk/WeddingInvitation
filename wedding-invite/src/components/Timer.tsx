@@ -52,7 +52,7 @@ export default function Timer() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl text-center mb-10 italic"
+          className="text-4xl text-center mb-10 font-alexbrush"
         >
           До свадьбы осталось
         </motion.h2>
@@ -65,19 +65,19 @@ export default function Timer() {
         >
           <div>
             <div className="font-bold">{timeLeft.days}</div>
-            <div className="text-gray-300 text-sm mt-1">Дней</div>
+            <div className="text-sm mt-1 font-alexbrush">Дней</div>
           </div>
           <div>
             <div className="font-bold">{timeLeft.hours}</div>
-            <div className="text-gray-300 text-sm mt-1">Часов</div>
+            <div className="text-sm mt-1 font-alexbrush">Часов</div>
           </div>
           <div>
             <div className="font-bold">{timeLeft.minutes}</div>
-            <div className="text-gray-300 text-sm mt-1">Минут</div>
+            <div className="text-sm mt-1 font-alexbrush">Минут</div>
           </div>
           <div>
             <div className="font-bold">{timeLeft.seconds}</div>
-            <div className="text-gray-300 text-sm mt-1">Секунд</div>
+            <div className="text-sm mt-1 font-alexbrush">Секунд</div>
           </div>
         </motion.div>
       </div>

@@ -6,13 +6,13 @@ export default function Location() {
     "https://yandex.ru/maps/?text=Усадьба%20La%20Dolce%20Vita,%20д.%20Русаково,%20Русаковская%20ул.,%2014";
 
   return (
-    <section className="bg-white text-black px-8 py-24">
+    <section className="bg-white text-black px-8 py-8">
       {/* Заголовок секции */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-4xl md:text-5xl text-center italic mb-8"
+        className="text-4xl md:text-5xl text-center mb-8 font-alexbrush"
       >
         Место проведения
       </motion.h2>
@@ -24,15 +24,21 @@ export default function Location() {
         transition={{ delay: 0.2, duration: 0.8 }}
         className="max-w-2xl mx-auto text-center mb-10"
       >
-        <h3 className="text-3xl italic mb-2">Усадьба "La Dolce Vita"</h3>
-        <p className="text-2xl text-gray-900">
+        <h3 className="text-3xl mb-2 font-alexbrush">
+          Усадьба "La Dolce Vita"
+        </h3>
+        <p className="text-[1.4rem] text-gray-900 font-alexbrush leading-tight ">
           Авторский стиль усадьбы с нотками Италии, Испании и Франции поражает
           воображение даже самых требовательных гостей. Просторная уютная
           территория с водоемом и фонтаном. Большой банкетный зал, комфортные
           номера для ночлега.
         </p>
-        <p className="text-2xl text-gray-900">Именно здесь мы будем отмечать</p>
-        <h3 className="text-3xl italic mb-2">День рождения нашей семьи !</h3>
+        <p className="text-[1.4rem] text-gray-900 font-alexbrush">
+          Именно здесь мы будем отмечать
+        </p>
+        <h3 className="text-3xl mb-2 font-alexbrush">
+          День рождения нашей семьи !
+        </h3>
       </motion.div>
 
       {/* Фото */}
@@ -47,7 +53,7 @@ export default function Location() {
           alt="Усадьба La Dolce Vita"
           className="w-full rounded-lg object-cover"
         />
-        <p className="text-base text-gray-900 mt-2 text-center">
+        <p className="text-[1.3rem] text-gray-900 mt-2 text-center font-alexbrush">
           Минская область, Узденский район, д. Русаково, ул. Русаковская дом 14
         </p>
       </motion.div>
@@ -62,7 +68,7 @@ export default function Location() {
         <a
           href={mapLink}
           target="_blank"
-          className="inline-block px-6 py-3 border border-black rounded hover:bg-black hover:text-white transition"
+          className="text-[1.4rem] inline-block px-6 py-3 border border-black rounded hover:bg-black hover:text-white transition font-alexbrush"
         >
           Смотреть на карте
         </a>
@@ -73,7 +79,7 @@ export default function Location() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.8 }}
-        className="max-w-2xl mx-auto text-center text-base text-gray-900"
+        className="text-[1.3rem] max-w-2xl mx-auto text-center text-base text-gray-900 font-alexbrush leading-tight"
       >
         Для вашего комфорта предлагаем прокладывать маршрут через деревню
         Яченка!
