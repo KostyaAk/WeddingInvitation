@@ -8,6 +8,7 @@ export default function RSVP() {
   const [guests, setGuests] = useState("");
   const [transfer, setTransfer] = useState("Нет не нужен");
   const [overnight, setOvernight] = useState("Нет не планирую");
+  const [comment, setComment] = useState("");
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
@@ -30,8 +31,9 @@ export default function RSVP() {
             guests,
             transfer,
             overnight,
+            comment,
           }),
-        }
+        },
       );
 
       if (res.ok) {
@@ -41,6 +43,7 @@ export default function RSVP() {
         setGuests("");
         setTransfer("Не нужен");
         setOvernight("Не планирую");
+        setComment("");
       } else {
         setStatus("error");
       }
@@ -64,7 +67,7 @@ export default function RSVP() {
       >
         Пожалуйста, подтвердите ваше участие до
         <br />
-        <b>1 апреля 2026</b>
+        <b>01 апреля 2026</b>
       </motion.p>
 
       {/* Имя */}
@@ -226,6 +229,18 @@ export default function RSVP() {
                   Нет, не планирую
                 </label>
               </div>
+            </div>
+            <div>
+              <label className="text-[1.5rem] block text-lg mb-1 font-alexbrush">
+                Есть ли пищевая аллергия (если да, напишите на что)
+              </label>
+              <input
+                type="text"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                required
+                className="text-[1.3rem] w-full px-4 py-3 border rounded focus:outline-none focus:border-black font-alexbrush"
+              />
             </div>
           </motion.div>
         )}

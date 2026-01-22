@@ -11,7 +11,8 @@ export class RsvpService {
     Присутствие: ${data.attending}
     Гостей: ${data.guests}
     Трансфер: ${data.transfer}
-    Ночёвка: ${data.overnight}`;
+    Ночёвка: ${data.overnight}
+    Комментарий: ${data.comment}`;
 
       const url = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 

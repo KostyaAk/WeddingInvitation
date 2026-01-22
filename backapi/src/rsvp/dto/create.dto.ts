@@ -4,4 +4,5 @@ export class CreateRsvpDto {
   guests: number;
   transfer: string;
   overnight: string;
+  comment: string;
 }
