@@ -44,7 +44,7 @@ export default function DressCode() {
         className="max-w-4xl mx-auto mb-4"
       >
         <img
-          src="/fotos/dr2code.jfif"
+          src="/fotos/code3.jpg"
           className="w-full rounded-lg object-cover"
         />
       </motion.div>
