@@ -65,7 +65,7 @@ export default function RSVP() {
         transition={{ delay: 0.2 }}
         className="text-[1.42rem] text-center text-lg mb-8 font-alexbrush leading-tight"
       >
-        Пожалуйста, подтвердите ваше участие до
+        Пожалуйста, подтвердите ваше присутствие до
         <br />
         <b>01 апреля 2026</b>
       </motion.p>
