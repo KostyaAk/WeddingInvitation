@@ -30,6 +30,18 @@ export default function Details() {
           подарить бутылочку вашего любимого алкоголя в нашу коллекцию !
         </p>
       </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.4, duration: 0.8 }}
+        className="max-w-4xl mx-auto py-4"
+      >
+        <img
+          src="/fotos/married.jpg"
+          className="w-full rounded-lg object-cover"
+        />
+      </motion.div>
     </section>
   );
 }

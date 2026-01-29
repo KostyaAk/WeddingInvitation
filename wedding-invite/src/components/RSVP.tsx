@@ -54,7 +54,7 @@ export default function RSVP() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6 p-4">
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6 p-2">
       <h2 className="text-4xl text-center font-alexbrush mb-8">
         Подтверждение приглашения
       </h2>
