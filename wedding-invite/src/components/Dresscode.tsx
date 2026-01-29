@@ -3,7 +3,21 @@ import { motion } from "framer-motion";
 
 export default function DressCode() {
   return (
-    <section className="bg-white text-black px-6 py-8 md:py-18">
+    <section className="bg-white text-black px-8 pt-8 pb-4 md:pt-18 md:pb-8">
+      <div className="relative flex justify-center items-center gap-4 max-w-5xl mx-auto py-8">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          viewport={{ once: true }}
+          className="w-1/2 overflow-hidden rounded-lg mb-12"
+        >
+          <img
+            src="/fotos/married.jpg"
+            className="w-full h-[390px] object-cover object-[100%_100%]"
+          />
+        </motion.div>
+      </div>
       {/* Заголовок */}
       <motion.h2
         initial={{ opacity: 0, y: 15 }}

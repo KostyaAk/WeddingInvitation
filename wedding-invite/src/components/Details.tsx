@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Details() {
   return (
-    // <section className="min-h-screen bg-white text-black px-8 py-24 flex flex-col justify-center">
-    <section className="bg-white text-black px-8 py-8 md:py-18">
+    <section className="bg-white text-black px-8 pt-8 pb-4 md:pt-18 md:pb-6">
       <motion.h2
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,6 +29,20 @@ export default function Details() {
           подарить бутылочку вашего любимого алкоголя в нашу коллекцию !
         </p>
       </motion.div>
+      <div className="relative flex justify-center items-center gap-4 max-w-5xl mx-auto py-8">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          viewport={{ once: true }}
+          className="w-1/2 overflow-hidden rounded-lg mb-12"
+        >
+          <img
+            src="/fotos/bu.jpg"
+            className="w-full h-[390px] object-cover object-[100%_100%]"
+          />
+        </motion.div>
+      </div>
     </section>
   );
 }
