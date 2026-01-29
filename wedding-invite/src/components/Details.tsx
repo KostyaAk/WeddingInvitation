@@ -38,7 +38,7 @@ export default function Details() {
         className="max-w-4xl mx-auto py-4"
       >
         <img
-          src="/fotos/married.jpg"
+          src="/fotos/married_cake.jpg"
           className="w-full rounded-lg object-cover"
         />
       </motion.div>

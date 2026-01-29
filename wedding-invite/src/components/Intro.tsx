@@ -58,7 +58,7 @@ export default function Intro() {
           className="w-1/4 overflow-hidden rounded-lg"
         >
           <img
-            src="/fotos/tulips.jpg"
+            src="/fotos/tulips_candles.jpg"
             className="w-full h-[260px] object-cover"
           />
         </motion.div>
