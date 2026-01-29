@@ -38,7 +38,7 @@ export default function Details() {
           className="w-1/2 overflow-hidden rounded-lg mb-12"
         >
           <img
-            src="/fotos/bu.jpg"
+            src="/fotos/beautiful.jpg"
             className="w-full h-[390px] object-cover object-[100%_100%]"
           />
         </motion.div>
